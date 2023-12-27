@@ -1,13 +1,13 @@
 <?php
-namespace Wisdomanthoni\Cashier\Http\Controllers;
+namespace Airondev\Cashier\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Routing\Controller;
-use Wisdomanthoni\Cashier\Cashier;
-use Wisdomanthoni\Cashier\Subscription;
+use Airondev\Cashier\Cashier;
+use Airondev\Cashier\Subscription;
 use Symfony\Component\HttpFoundation\Response;
-use Wisdomanthoni\Cashier\Http\Middleware\VerifyWebhookSignature;
+use Airondev\Cashier\Http\Middleware\VerifyWebhookSignature;
 
 class WebhookController extends Controller
 {
@@ -84,7 +84,7 @@ class WebhookController extends Controller
      * Get the model for the given subscription Code.
      *
      * @param  string  $subscriptionCode
-     * @return \Wisdomanthoni\Cashier\Subscription|null
+     * @return \Airondev\Cashier\Subscription|null
      */
     protected function getSubscriptionByCode($subscriptionCode): ?Subscription
     {
@@ -94,7 +94,7 @@ class WebhookController extends Controller
      * Get the billable entity instance by Paystack Code.
      *
      * @param  string  $paystackCode
-     * @return \Wisdomanthoni\Cashier\Billable
+     * @return \Airondev\Cashier\Billable
      */
     protected function getUserByPaystackCode($paystackCode)
     {

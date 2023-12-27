@@ -1,5 +1,5 @@
 <?php
-namespace Wisdomanthoni\Cashier;
+namespace Airondev\Cashier;
 
 use Exception;
 use Illuminate\Support\Str;

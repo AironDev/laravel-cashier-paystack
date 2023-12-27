@@ -1,5 +1,5 @@
 <?php
-namespace Wisdomanthoni\Cashier\Http\Middleware;
+namespace Airondev\Cashier\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Foundation\Application;

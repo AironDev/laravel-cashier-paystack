@@ -1,5 +1,5 @@
 {
-    "name": "airondev/cashier-paystack",
+    "name": "airondev/laravel-cashier-paystack",
     "description": "A Laravel Cashier Wrapper that provides an expressive, fluent interface to Paystack's subscription invoicing services.",
     "keywords": ["laravel", "paystack", "billing", "cashier"],
     "license": "MIT",
@@ -22,18 +22,18 @@
     },
     "autoload": {
         "psr-4": {
-            "Wisdomanthoni\\Cashier\\": "src/"
+            "Airondev\\Cashier\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Wisdomanthoni\\Cashier\\Tests\\": "tests/"
+            "Airondev\\Cashier\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Wisdomanthoni\\Cashier\\CashierServiceProvider"
+                "Airondev\\Cashier\\CashierServiceProvider"
             ]
         }
     },

@@ -1,5 +1,5 @@
 <?php
-namespace Wisdomanthoni\Cashier;
+namespace Airondev\Cashier;
 
 use Illuminate\Support\ServiceProvider;
 

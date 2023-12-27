@@ -3,7 +3,6 @@ namespace Airondev\Cashier;
 
 use Exception;
 use Carbon\Carbon;
-use Illuminate\Support\Collection;
 use Unicodeveloper\Paystack\Facades\Paystack;
 
 class SubscriptionBuilder

@@ -3,6 +3,8 @@ namespace Airondev\Cashier;
 
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Config;
+use Unicodeveloper\Paystack\Exceptions\IsNullException;
+
 class PaystackService {
     /**
      * Issue Secret Key from your Paystack Dashboard
@@ -19,6 +21,11 @@ class PaystackService {
      * @var mixed
      */
     protected $response;
+    /**
+     * Paystack API base Url
+     * @var string
+     */
+    protected $baseUrl;
     /**
      * Paystack API base Url
      * @var string
@@ -141,6 +148,10 @@ class PaystackService {
     {
         return (new self)->setHttpResponse('/subscription', 'POST', $data)->getResponse();
     }
+    public static function fetchSubscription($id)
+    {
+        return (new self)->setHttpResponse("/subscription/$id", 'GET')->getResponse();
+    }
 
     public static function createCustomer($data)
     {
@@ -193,6 +204,11 @@ class PaystackService {
     public static function verifyInvoice($invoice_code)
     {
         return (new self)->setHttpResponse('/paymentrequest/verify'. $invoice_code, 'GET', [])->getData();
+    }
+
+    public static function verifyTransaction($reference)
+    {
+        return (new self)->setHttpResponse('/transaction/verify/'. $reference, 'GET', [])->getData();
     }
 
     public static function notifyInvoice($invoice_id)

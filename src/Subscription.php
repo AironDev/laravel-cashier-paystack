@@ -93,7 +93,9 @@ class Subscription extends Model
      */
     public function onTrial()
     {
-        return $this->trial_ends_at && $this->trial_ends_at->isFuture();
+       
+        return $this->trial_ends_at &&
+            Carbon::parse( $this->trial_ends_at)->isFuture();
     }
     /**
      * Determine if the subscription is within its grace period after cancellation.
@@ -102,7 +104,7 @@ class Subscription extends Model
      */
     public function onGracePeriod()
     {
-        return $this->ends_at && $this->ends_at->isFuture();
+        return $this->ends_at && Carbon::parse($this->ends_at)->isFuture();
     }
     
     /**
@@ -125,7 +127,10 @@ class Subscription extends Model
      */
     public function cancel()
     {
+
         $subscription = $this->asPaystackSubscription();
+
+        // dd($subscription);
 
         PaystackService::disableSubscription([
             'token' => $subscription['email_token'],
@@ -196,11 +201,14 @@ class Subscription extends Model
     {
         $subscriptions = PaystackService::customerSubscriptions($this->user->paystack_id);
 
+
+
+        // dd($subscriptions);
         if (! $subscriptions || empty($subscriptions)) {
             throw new LogicException('The Paystack customer does not have any subscriptions.');
         }
         foreach($subscriptions as $subscription ) {
-            if($subscription['id'] == $this->paystack_id ) {
+            if($subscription['customer']['id'] == $this->paystack_id ) {
                 return $subscription;
             }
         }

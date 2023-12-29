@@ -147,6 +147,9 @@ trait Billable
     public function subscribed($subscription = 'default', $plan = null)
     {
         $subscription = $this->subscription($subscription);
+
+        // dd($subscription);
+
         if (is_null($subscription)) {
             return false;
         }
@@ -366,7 +369,7 @@ trait Billable
      */
     public function asPaystackCustomer()
     {
-        $customer = Paystack::fetchCustomer($this->paystack_id)['data'];
+        $customer = Paystack::fetchCustomer($this->paystack_code)['data'];
         return $customer;
     }
 
